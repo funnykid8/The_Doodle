@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>THE DOODLE — Debate Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f8ff;--card:#ffffff;--ink:#0f2a5e;--soft:#4a5f8a;--line:#c5d3ee;--yel:#ffd60a;--yelink:#0f2a5e;--blue:#1d4ed8;--bad:#b42318;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1630;--card:#122246;--ink:#eaf1ff;--soft:#9fb3dd;--line:#27407a;--blue:#7fa8ff;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0b1630;--card:#122246;--ink:#eaf1ff;--soft:#9fb3dd;--line:#27407a;--blue:#7fa8ff;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+h1{font:400 clamp(44px,10vw,84px)/.95 "Caveat Brush",Impact,cursive;margin:8px 0 6px;letter-spacing:.5px}
+h1 span{background:var(--yel);color:var(--yelink);padding:0 .15em;border-radius:6px;display:inline-block;transform:rotate(-1.5deg)}
+.sub{color:var(--soft);max-width:52ch;margin:0 0 22px}
+.panel{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:18px;box-shadow:5px 5px 0 var(--yel)}
+label{font-weight:800;display:block;margin:0 0 6px}
+textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:84px;resize:vertical}
+textarea:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.seg{display:flex;border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{flex:1;text-align:center;margin:0;padding:10px;cursor:pointer;font-weight:600}
+.seg input:checked+label{background:var(--ink);color:var(--bg)}
+.seg input:focus-visible+label{outline:3px solid var(--blue);outline-offset:-3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.chip{font:inherit;font-size:14px;background:none;border:1.5px dashed var(--soft);color:var(--soft);border-radius:99px;padding:4px 12px;cursor:pointer}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.go{margin-top:16px;font:400 26px "Caveat Brush",Impact,cursive;background:var(--yel);color:#0f2a5e;border:2px solid var(--ink);border-radius:12px;padding:8px 22px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.go:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.go[disabled]{opacity:.6;cursor:wait}
+#err{color:var(--bad);font-weight:600;margin:10px 0 0;min-height:1.2em}
+.note{font-size:14px;color:var(--soft);margin:14px 0 0}
+#out{margin-top:30px}
+.tabs{display:flex;gap:6px;border-bottom:2px solid var(--ink);margin-bottom:18px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:800;background:none;border:2px solid transparent;border-bottom:0;color:var(--soft);padding:9px 16px;cursor:pointer;border-radius:10px 10px 0 0}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.frame{font-size:19px;font-weight:600;margin:0 0 18px}
+.pt{background:var(--card);border:2px solid var(--line);border-left:8px solid var(--ink);border-radius:10px;padding:14px 16px;margin:0 0 14px}
+.pt h3{margin:0 0 6px;font-size:18px}
+.pt p{margin:6px 0}
+.src{font-size:14px;color:var(--soft)}
+.src a{color:var(--blue);font-weight:600}
+.tag{display:inline-block;font-size:13px;font-weight:800;border:2px solid var(--ink);border-radius:6px;padding:0 8px;margin-left:8px;vertical-align:middle}
+.tag.strong{background:var(--ink);color:var(--bg)}
+.tag.medium{background:var(--yel);color:#0f2a5e}
+.tag.shaky{border-style:dashed;color:var(--bad);border-color:var(--bad)}
+.atk{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 14px}
+@media(max-width:620px){.atk{grid-template-columns:1fr}}
+.atk>div{border-radius:10px;padding:12px 14px;border:2px solid var(--line);background:var(--card)}
+.atk .them{border-style:dashed}
+.atk .you{border-color:var(--ink)}
+.atk b{display:block;margin-bottom:4px}
+.sheet{background:var(--card);border:3px dashed var(--ink);border-radius:6px;padding:20px 18px;font-family:"Caveat Brush",Impact,cursive;font-size:22px;line-height:1.25}
+.sheet h2{font-size:clamp(34px,7vw,52px);margin:0;line-height:1}
+.sheet .hook{font-size:22px;margin:6px 0 16px;color:var(--soft)}
+.sheet h4{font-weight:400;font-size:26px;margin:18px 0 6px;display:inline-block;background:var(--yel);color:#0f2a5e;padding:0 10px;border-radius:5px}
+.pill{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.pill div{border:2px solid var(--ink);border-radius:10px;padding:8px 12px}
+.sheet ul{margin:0;padding-left:22px}
+.sheet li{margin:4px 0}
+.close{margin-top:18px;border-top:3px dashed var(--ink);padding-top:12px}
+.tools{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tools button{font:inherit;font-weight:800;background:var(--card);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:8px 16px;cursor:pointer}
+.spin{display:inline-block;width:14px;height:14px;border:3px solid var(--ink);border-right-color:transparent;border-radius:50%;margin-right:8px;vertical-align:-2px;animation:r .8s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.spin{animation:none}}
+.credit{margin-top:44px;padding-top:16px;border-top:2px dashed var(--line);text-align:center;font:400 24px "Caveat Brush",Impact,cursive;color:var(--soft)}
+@media print{body{background:#fff;color:#000}header,.panel,.tabs,.tools,.note,#err{display:none!important}.sheet{border-color:#000;background:#fff;color:#000}#view-case,#view-atk{display:none!important}#view-doodle{display:block!important}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>THE <span>DOODLE</span></h1>
+  <p class="sub">Type your debate motion. Get points with sources to check, the attacks you'll face and how to answer them, then a one-page cheat sheet to carry in.</p>
+</header>
+
+<section class="panel" aria-label="Motion setup">
+  <label for="motion">Motion or topic</label>
+  <textarea id="motion" placeholder="e.g. This house believes social media does more harm than good to teenagers"></textarea>
+  <div class="chips" id="chips"></div>
+  <div class="row">
+    <div>
+      <label id="sidel">Your side</label>
+      <div class="seg" role="radiogroup" aria-labelledby="sidel">
+        <input type="radio" name="side" id="s1" value="For" checked><label for="s1">For</label>
+        <input type="radio" name="side" id="s2" value="Against"><label for="s2">Against</label>
+      </div>
+    </div>
+    <div>
+      <label for="level">Debate style</label>
+      <select id="level">
+        <option>School debate</option>
+        <option>Parliamentary</option>
+        <option>Competitive / MUN</option>
+      </select>
+    </div>
+  </div>
+  <button class="go" id="go">Build my case</button>
+  <div id="err" role="alert"></div>
+  <p class="note">Sources are suggested from what the AI knows. Every point has a Find source link and a check step. Confirm each one before you quote it in a round.</p>
+</section>
+
+<section id="out" hidden>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-case" aria-selected="true" aria-controls="view-case">Your case</button>
+    <button class="tab" role="tab" id="t-atk" aria-selected="false" aria-controls="view-atk">Attacks and defences</button>
+    <button class="tab" role="tab" id="t-doodle" aria-selected="false" aria-controls="view-doodle">THE DOODLE</button>
+  </div>
+  <div id="view-case" role="tabpanel"></div>
+  <div id="view-atk" role="tabpanel" hidden></div>
+  <div id="view-doodle" role="tabpanel" hidden></div>
+</section>
+<footer class="credit">Created by Siddharth.N</footer>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const EX=['Social media does more harm than good to teenagers','Homework should be banned in primary schools','Nuclear power is essential to fight climate change','School uniforms should be compulsory'];
+$('#chips').innerHTML=EX.map(e=>`<button type="button" class="chip">${esc(e)}</button>`).join('');
+$('#chips').addEventListener('click',e=>{if(e.target.classList.contains('chip'))$('#motion').value='This house believes that '+e.target.textContent.charAt(0).toLowerCase()+e.target.textContent.slice(1)});
+
+const tabs=['case','atk','doodle'];
+function show(n){tabs.forEach(t=>{$('#t-'+t).setAttribute('aria-selected',t===n);$('#view-'+t).hidden=t!==n})}
+tabs.forEach(t=>$('#t-'+t).addEventListener('click',()=>show(t)));
+
+function link(src,yr){return 'https://scholar.google.com/scholar?q='+encodeURIComponent((src||'')+' '+(yr||''))}
+
+function render(d){
+  const pts=(d.points||[]).map(p=>`<article class="pt"><h3>${esc(p.title)}<span class="tag ${esc(p.strength)}">${esc(p.strength)}</span></h3>
+   <p>${esc(p.claim)}</p><p><b>Evidence:</b> ${esc(p.evidence)}</p>
+   <p class="src">Source: ${esc(p.source)}${p.year?' ('+esc(p.year)+')':''} · <a href="${link(p.source,p.year)}" target="_blank" rel="noopener">Find source</a></p>
+   <p class="src"><b>Check before you quote:</b> ${esc(p.check)}</p></article>`).join('');
+  $('#view-case').innerHTML=`<p class="frame">${esc(d.framing)}</p>`+pts;
+  $('#view-atk').innerHTML=(d.attacks||[]).map(a=>`<div class="atk"><div class="them"><b>They will say</b>${esc(a.they_say)}</div><div class="you"><b>You reply</b>${esc(a.you_say)}<div class="src">Backed by: ${esc(a.source)} · <a href="${link(a.source,'')}" target="_blank" rel="noopener">Find source</a></div></div></div>`).join('');
+  const k=d.doodle||{},li=a=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#view-doodle').innerHTML=`<div class="sheet"><h2>${esc(k.headline)}</h2><p class="hook">${esc(k.hook)}</p>
+   <h4>3 pillars</h4><div class="pill">${(k.pillars||[]).map(x=>`<div>${esc(x)}</div>`).join('')}</div>
+   <h4>Numbers to drop</h4><ul>${li(k.numbers)}</ul>
+   <h4>If they say...</h4><ul>${li(k.comebacks)}</ul>
+   <h4>Zingers</h4><ul>${li(k.zingers)}</ul>
+   <div class="close"><b>Closer:</b> ${esc(k.closer)}</div></div>
+   <div class="tools"><button type="button" id="pr">Print THE DOODLE</button><span class="src">Sources are on the Your case tab. Verify them first.</span></div>`;
+  $('#pr').addEventListener('click',()=>window.print());
+  $('#out').hidden=false;show('case');$('#out').scrollIntoView({behavior:'smooth'});
+}
+
+$('#go').addEventListener('click',async()=>{
+  const motion=$('#motion').value.trim(),err=$('#err'),btn=$('#go');
+  err.textContent='';
+  if(!motion){err.textContent='Type your motion first.';return}
+  if(motion.length>300){err.textContent='Keep the motion under 300 characters.';return}
+  const side=document.querySelector('input[name=side]:checked').value,level=$('#level').value;
+  btn.disabled=true;btn.innerHTML='<span class="spin"></span>Building';
+  try{
+    const r=await fetch('/api/build',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({motion,side,level})});
+    if(r.status===429)throw new Error('Too many requests. Wait a while and try again.');
+    if(!r.ok)throw new Error('Could not build your case. Try again in a moment.');
+    render(await r.json());
+  }catch(e){
+    err.textContent=e.message||'Could not build your case. Check your connection and try again.';
+  }finally{btn.disabled=false;btn.textContent='Build my case'}
+});
+</script>
+</body>
+</html>
